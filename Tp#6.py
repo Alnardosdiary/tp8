@@ -1,4 +1,3 @@
-
 import json
 
 archivo_alumnos = "alumnos.json"
@@ -18,7 +17,16 @@ def agregar_alumno():
     nombre = input("Nombre del alumno: ")
     apellido = input("Apellido del alumno: ")
     fecha_nacimiento = input("Fecha de nacimiento del alumno: ")
-    dni = input("DNI del alumno: ")
+    
+    while True:
+        try:
+            dni = int(input("DNI del alumno: "))
+            if len(str(dni)) != 8:
+                raise ValueError("El DNI debe tener 8 dígitos.")
+            break
+        except ValueError as e:
+            print(f"Error: {e}")
+    
     tutor = input("Nombre del tutor: ")
     alumno = {
         "nombre": nombre,
@@ -55,7 +63,16 @@ def modificar_datos_alumno():
             nuevo_nombre = input("Nuevo nombre: ")
             nuevo_apellido = input("Nuevo apellido: ")
             nueva_fecha_nacimiento = input("Nueva fecha de nacimiento: ")
-            nuevo_dni = input("Nuevo DNI: ")
+            
+            while True:
+                try:
+                    nuevo_dni = int(input("Nuevo DNI: "))
+                    if len(str(nuevo_dni)) != 8:
+                        raise ValueError("El nuevo DNI debe tener 8 dígitos.")
+                    break
+                except ValueError as e:
+                    print(f"Error: {e}")
+            
             nuevo_tutor = input("Nuevo tutor: ")
             alumno["nombre"] = nuevo_nombre
             alumno["apellido"] = nuevo_apellido
